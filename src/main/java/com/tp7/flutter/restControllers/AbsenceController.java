@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,14 +27,20 @@ public class AbsenceController {
     public List<Absence> getAll() {
         return absenceRepo.findAll();
     }
+    
+    // GET absences par étudiant
+    @GetMapping("/etudiant/{etudiantId}")
+    public List<Absence> getByEtudiant(@PathVariable Long etudiantId) {
+        return absenceRepo.findByEtudiantId(etudiantId);
+    }
 
     @PostMapping("/add")
     public Absence insert(@RequestBody Absence a) {
         return absenceRepo.save(a);
     }
 
-    @DeleteMapping("/delete")
-    public void delete(@RequestBody AbsenceId id) {
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable AbsenceId id) {
         absenceRepo.deleteById(id);
     }
 }

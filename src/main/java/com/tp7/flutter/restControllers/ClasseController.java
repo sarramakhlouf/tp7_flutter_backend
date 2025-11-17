@@ -26,5 +26,13 @@ public class ClasseController {
         }
         return repo.save(c);
     }
+    
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable Long id) {
+        if (!repo.existsById(id)) {
+            throw new RuntimeException("Classe introuvable !");
+        }
+        repo.deleteById(id);
+    }
 
 }

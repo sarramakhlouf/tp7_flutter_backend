@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AbsenceId implements Serializable {
-    private Integer codMat;
-    private Integer nce;
+    private Long codMat;
+    private Long etudiantId;
     private Date dateA;
 }

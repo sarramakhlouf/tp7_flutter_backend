@@ -16,10 +16,10 @@ import lombok.NoArgsConstructor;
 @IdClass(AbsenceId.class)
 public class Absence {
     @Id
-    private Integer codMat;
+    private Long codMat;
 
     @Id
-    private Integer nce;
+    private Long etudiantId;
 
     @Id
     private Date dateA;

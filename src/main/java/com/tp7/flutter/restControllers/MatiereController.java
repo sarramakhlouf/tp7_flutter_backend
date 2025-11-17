@@ -23,7 +23,7 @@ public class MatiereController {
     }
 
     @GetMapping("/{id}")
-    public Matiere getMatiereById(@PathVariable Integer id) {
+    public Matiere getMatiereById(@PathVariable Long id) {
         return matiereRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Matiere non trouvée avec id : " + id));
     }
@@ -34,7 +34,7 @@ public class MatiereController {
     }
     
     @PutMapping("/edit/{id}")
-    public Matiere updateMatiere(@PathVariable Integer id, @RequestBody Matiere matiereDetails) {
+    public Matiere updateMatiere(@PathVariable Long id, @RequestBody Matiere matiereDetails) {
         Matiere matiere = matiereRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Matiere non trouvée avec id : " + id));
 
@@ -45,7 +45,7 @@ public class MatiereController {
     }
 
     @DeleteMapping("/{id}")
-    public String deleteMatiere(@PathVariable Integer id) {
+    public String deleteMatiere(@PathVariable Long id) {
         matiereRepository.deleteById(id);
         return "Matiere supprimée avec succès avec id : " + id;
     }

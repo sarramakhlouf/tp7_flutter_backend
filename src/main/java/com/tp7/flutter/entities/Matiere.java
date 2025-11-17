@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class Matiere {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer codMat;
+    private Long codMat;
     private String intMat;
     private String description;
 }

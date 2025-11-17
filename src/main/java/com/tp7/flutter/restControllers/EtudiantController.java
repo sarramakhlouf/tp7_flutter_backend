@@ -25,7 +25,7 @@ public class EtudiantController {
     }
 
     @GetMapping("/classe/{id}")
-    public List<Etudiant> byClasse(@PathVariable Integer id) {
+    public List<Etudiant> byClasse(@PathVariable Long id) {
         return etudiantRepo.findByClasse_Id(id);
     }
 
@@ -39,13 +39,13 @@ public class EtudiantController {
         return etudiantRepo.save(e);
     }
     
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id) {
+    @DeleteMapping("delete/{id}")
+    public void delete(@PathVariable Long id) {
         etudiantRepo.deleteById(id);
     }
 
-    @PutMapping("/{id}")
-    public Etudiant update(@PathVariable Integer id, @RequestBody Etudiant updatedEtudiant) {
+    @PutMapping("edit/{id}")
+    public Etudiant update(@PathVariable Long id, @RequestBody Etudiant updatedEtudiant) {
         Etudiant etudiant = etudiantRepo.findById(id)
                 .orElseThrow(() -> new RuntimeException("Étudiant non trouvé"));
         
