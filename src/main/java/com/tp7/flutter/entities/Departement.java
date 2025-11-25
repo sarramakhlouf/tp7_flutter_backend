@@ -20,21 +20,16 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Classe {
+public class Departement {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nomClass;
+    private String nomDept;
     
-    private int nbrEtud;
-    
-    @OneToMany(mappedBy = "classe", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "departement", cascade = CascadeType.REMOVE)
     @JsonIgnore
-    private List<Etudiant> etudiants;
+    private List<Classe> classes;
     
-    @ManyToOne
-    @JoinColumn(name = "codDept", referencedColumnName = "id")
-    private Departement departement;
-  
 }

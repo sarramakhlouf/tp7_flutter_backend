@@ -70,7 +70,7 @@ public class UserController {
         return userRepository.findByEmail(email);
     }
 
-    @PutMapping("/profile")
+    @PutMapping("/profile/update")
     public User updateProfile(
             @RequestHeader("Authorization") String authHeader,
             @RequestBody User updatedUser

@@ -23,7 +23,7 @@ public class SecurityConfig {
             session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(auth ->
             auth
-                .requestMatchers("/register", "/login", "/api/absences/etudiant/**").permitAll()
+                .requestMatchers("/register", "/login", "/api/absences/**").permitAll()
                 .anyRequest().authenticated()
         )
         .addFilterBefore(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);

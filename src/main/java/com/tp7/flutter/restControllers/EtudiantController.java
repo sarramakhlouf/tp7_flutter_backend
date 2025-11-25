@@ -2,6 +2,9 @@ package com.tp7.flutter.restControllers;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
 import java.util.List;
 import com.tp7.flutter.entities.Etudiant;
 import com.tp7.flutter.entities.Classe;
@@ -61,5 +64,12 @@ public class EtudiantController {
         }
 
         return etudiantRepo.save(etudiant);
+    }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<Etudiant> getEtudiantById(@PathVariable Long id) {
+        return etudiantRepo.findById(id)
+                .map(etudiant -> ResponseEntity.ok(etudiant))
+                .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 }
