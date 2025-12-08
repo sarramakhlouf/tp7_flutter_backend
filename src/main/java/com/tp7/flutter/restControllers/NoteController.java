@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.OptionalDouble;
 
 @RestController
 @RequestMapping("/api/notes")
@@ -61,5 +62,5 @@ public class NoteController {
         return repository.findByEtudiantId(etudiantId);
     }
     
-
+   
 }
